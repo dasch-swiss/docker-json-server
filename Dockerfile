@@ -12,11 +12,9 @@ RUN \
 
 # configure
 EXPOSE 8080
-VOLUME ["/data"] 
-WORKDIR /data
 
-COPY db.json /data/db/db.json
-COPY index.html /data/public/index.html
+COPY ./db.json /data/db/db.json
+COPY ./index.html /data/public/index.html
 
 # Define default command.
 ENTRYPOINT ["json-server", "--host", "0.0.0.0", "--port", "8080"]

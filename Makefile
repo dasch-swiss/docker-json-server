@@ -15,6 +15,10 @@ build-app-image: ## build and publish APP image locally
 publish-app-image: build-app-image ## publish APP Docker image to Docker-Hub
 	docker image push --all-tags $(APP_REPO)
 
+.PHONY: run-app-image
+run-app-image: build-app-image ## run APP image locally
+	docker run -p 8080:8080 $(APP_IMAGE)
+
 .PHONY: help
 help: ## this help
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST) | sort
