@@ -11,12 +11,13 @@ RUN \
 
 
 # configure
-EXPOSE 3000
-VOLUME [ "/data" ]
+EXPOSE 8080
+VOLUME ["/data"] 
 WORKDIR /data
 
-COPY db.json
+COPY db.json /data/db/db.json
+COPY index.html /data/public/index.html
 
 # Define default command.
-ENTRYPOINT ["json-server", "--host", "0.0.0.0"]
-CMD ["--watch", "db.json"]
+ENTRYPOINT ["json-server", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["--watch", "/data/db/db.json", "--static", "/data/public"]
