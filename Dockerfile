@@ -17,5 +17,5 @@ COPY ./db.json /data/db/db.json
 COPY ./index.html /data/public/index.html
 
 # Define default command.
-ENTRYPOINT ["json-server", "--host", "0.0.0.0", "--port", "8080"]
+ENTRYPOINT ["json-server", "--host", "0.0.0.0", "--port", "3000"]
 CMD ["--watch", "/data/db/db.json", "--static", "/data/public"]
